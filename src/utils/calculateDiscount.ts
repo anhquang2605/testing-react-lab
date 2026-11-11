@@ -26,3 +26,14 @@ export function calculateTotal(products: OtherProduct[]): number {
   }
   return sum;
 }
+
+export function emailValidator(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!email) {
+    return false;
+  }
+  if(email.length === 0) {
+    return false;
+  }
+  return emailRegex.test(email);
+}

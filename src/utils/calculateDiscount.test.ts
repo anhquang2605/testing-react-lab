@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 
-import { calculateDiscount, calculateTotal, getaProduct } from './calculateDiscount';
+import { calculateDiscount, calculateTotal, emailValidator, getaProduct } from './calculateDiscount';
 
 describe('calculate Discount testers', () => {
   it('should calculate a 20% discount', () => {
@@ -41,3 +41,18 @@ describe('calculate get total from products', () => {
     expect(calculateTotal(products)).toBe(0);
   });
 })
+
+describe('emailValidator', () => {
+  it('should return true for a valid email', () => {
+    expect(emailValidator('k2oYh@example.com')).toBe(true);
+  });
+  it('should return false for an invalid email without @', () => {
+    expect(emailValidator('test')).toBe(false);
+  });
+  it('should return false for an invalid email without domain', () => {
+    expect(emailValidator('test@')).toBe(false);
+  });
+  it('should return false for an invalid email with empty string', () => {
+    expect(emailValidator('')).toBe(false);
+  });
+});
