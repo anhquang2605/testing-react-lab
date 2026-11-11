@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 
 import { calculateDiscount } from './calculateDiscount';
 
-describe('calculateDiscount', () => {
+describe('calculate Discount testers', () => {
   it('should calculate a 20% discount', () => {
     expect(calculateDiscount(100, 0.2)).toBe(80);
   });
