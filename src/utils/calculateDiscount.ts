@@ -2,6 +2,16 @@ export function calculateDiscount(
   price: number,
   discount: number
 ): number {
+ 
+  if (discount < 0 || discount > 1) {
+    throw new Error('Discount must be between 0 and 1');
+  }
+  if (price < 0 ) {
+    throw new Error('Price must be a positive number');
+  }
+   if (discount === 0) {
+    return price;
+  }
   return price - price * discount;
 }
 export interface Product {

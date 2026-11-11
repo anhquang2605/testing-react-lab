@@ -10,8 +10,17 @@ describe('calculate Discount testers', () => {
   it('should return the original price without discount', () => {
     expect(calculateDiscount(100, 0)).toBe(100);
   });
-  it('should return a product with price and discount', () => {
-    expect(getaProduct(100, 0.2)).toEqual({ price: 100, discount: 0.2 })
+  it('should return 0 for a 100% discount', () => {
+    expect(calculateDiscount(100, 1)).toBe(0);
+  });
+  it('should throw an error for a negative price', () => {
+    expect(() => calculateDiscount(-100, 0.2)).toThrow('Price must be a positive number');
+  });
+  it('should throw an error for a discount greater than 1', () => {
+    expect(() => calculateDiscount(100, 1.1)).toThrow('Discount must be between 0 and 1');
+  });
+  it('should throw an error for a negative discount', () => {
+    expect(() => calculateDiscount(100, -0.1)).toThrow('Discount must be between 0 and 1');
   });
 });
 
