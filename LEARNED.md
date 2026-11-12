@@ -60,3 +60,27 @@ Query	Behavior	When to use
 getBy	Returns element or throws immediately	Element should exist
 queryBy	Returns element or null	Checking absence
 findBy	Returns a Promise	Element appears asynchronously
+
+
+6. What is userEvent?
+React Testing Library provides userEvent through a separate package.
+
+It simulates user interactions, such as:
+- Clicking buttons.
+- Typing into inputs.
+- Selecting options.
+- Tabbing between elements.
+First, import it:
+import userEvent from '@testing-library/user-event';
+
+7. mock function
+Consider:
+const mockAddToCart = vi.fn();
+
+
+This creates a mock function.
+
+A mock function allows us to track:
+- Whether a function was called.
+- How many times it was called.
+- What arguments were passed to it.
