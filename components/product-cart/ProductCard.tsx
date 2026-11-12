@@ -1,5 +1,5 @@
 'use client';
-
+import { useState } from 'react';
 export interface Product {
   id: string;
   name: string;
@@ -17,6 +17,7 @@ export default function ProductCard({
   product,
   onAddToCart,
 }: ProductCardProps) {
+  const [addedToCart, setAddedToCart] = useState(false);
   return (
     <article>
       <img
@@ -28,14 +29,17 @@ export default function ProductCard({
 
       <p>${product.price.toFixed(2)}</p>
 
-      {product.isOnSale && (
+      {product.isOnSale? (
         <span>On Sale</span>
-      )}
+      ): <span> Not On Sale</span>}
 
       <button
-        onClick={() => onAddToCart(product.id)}
+        onClick={() => {
+          onAddToCart(product.id)
+          setAddedToCart(true);
+        }}
       >
-        Add to Cart
+        {addedToCart ? 'Added to Cart' : 'Add to Cart'}
       </button>
     </article>
   );

@@ -60,5 +60,9 @@ describe('ProductCard', async () => {
     expect(mockAddToCart).toHaveBeenCalledWith(
         'product-1'
     );
-  });
+    //testing something to not should have been existed
+    expect(
+        screen.queryByText('Not on Sale')
+    ).not.toBeInTheDocument();
+});
 });
