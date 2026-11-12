@@ -7,6 +7,6 @@ it('should display Hello World', () => {
   render(<Greeting />);
 
   expect(
-    screen.getByRole('heading', { name: 'Hello World' })
+    screen.getByRole('heading', { name: 'Hello, welcome to our website!' })
   ).toBeInTheDocument();
 });
