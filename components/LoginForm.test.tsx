@@ -7,13 +7,13 @@ describe('LoginForm', () => {
     const mockOnLogin = vi.fn();
     it('should render the login form', () => {
         render(<LoginForm onLogin={mockOnLogin} />);
-
+        //label text of form fields
         expect(
-            screen.getByRole('textbox', { name: /email/i })
+            screen.getByLabelText('Email')
         ).toBeInTheDocument();
         expect(
-            screen.getByRole('textbox', { name: /password/i })
-        )
+            screen.getByLabelText('Password')
+        ).toBeInTheDocument();
     });
 
 });
