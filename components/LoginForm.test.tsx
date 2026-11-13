@@ -31,6 +31,7 @@ describe('LoginForm', () => {
         expect(
             await screen.findByText('Password is required')
         ).toBeInTheDocument();
+        expect(mockOnLogin).not.toHaveBeenCalled();
     });
 
 });
