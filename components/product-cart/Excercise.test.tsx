@@ -10,6 +10,7 @@ import { vi } from 'vitest';
 
 describe('ProductCard test suite', async () => {
     it('should render the product information', async () => {
+        //create a simulated user
         const user = userEvent.setup();
         const product = {
         id: 'product-1',
@@ -40,6 +41,7 @@ describe('ProductCard test suite', async () => {
         expect(img).toBeInTheDocument();
         expect(img).toHaveAttribute('src', '/mouse.jpg');
         const button = screen.getByRole('button', {name: 'Add to Cart'});
+        //simulate user clicking
         await user.click(button);
         expect(mockAddToCart).toHaveBeenCalledWith(product.id);
         expect(mockAddToCart).toHaveBeenCalledTimes(1);
