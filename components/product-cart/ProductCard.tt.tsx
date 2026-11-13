@@ -57,6 +57,7 @@ describe('ProductCard', async () => {
     });
     await user.click(button);
     expect(mockAddToCart).toHaveBeenCalledTimes(1);
+    expect(mockAddToCart).toHaveBeenCalledTimes(2);
     expect(mockAddToCart).toHaveBeenCalledWith(
         'product-1'
     );
