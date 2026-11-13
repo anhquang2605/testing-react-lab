@@ -84,3 +84,6 @@ A mock function allows us to track:
 - Whether a function was called.
 - How many times it was called.
 - What arguments were passed to it.
+
+8. Testing forms
+- getByLabelText('label name'): get the inputs associate with the labels, make sure the label and the input connected via htmlFor attribute
