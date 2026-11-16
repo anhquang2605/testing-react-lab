@@ -32,6 +32,16 @@ describe('LoginForm', () => {
             await screen.findByText('Password is required')
         ).toBeInTheDocument();
         expect(mockOnLogin).not.toHaveBeenCalled();
+        //simualatiing someone typing
+        await user.type(emailInput, 'invalid-email');
+        await user.type(passwordInput, '123');
+        await user.click(submitButton);
+        expect(
+            screen.getByText('Please enter a valid email')
+        ).toBeInTheDocument();
+        expect(
+            screen.getByText("Password must be at least 6 characters")
+        ).toBeInTheDocument();
     });
 
 });
