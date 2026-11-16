@@ -22,7 +22,7 @@ describe('LoginForm', () => {
         const emailInput = screen.getByLabelText('Email');
         const passwordInput = screen.getByLabelText('Password');
         const submitButton = screen.getByRole('button', {
-            name: 'Login',
+            name: 'Log In',
         });
         await user.click(submitButton);
         expect(
