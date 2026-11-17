@@ -19,12 +19,12 @@ describe('LoginForm', () => {
     it('should display error messages for invalid input', async () => {
         renderLoginForm(mockOnLogin);
         const user = userEvent.setup();
-        const emailInput = screen.getByLabelText('Email');
+        /* const emailInput = screen.getByLabelText('Email');
         const passwordInput = screen.getByLabelText('Password');
         const submitButton = screen.getByRole('button', {
             name: 'Log In',
-        });
-        await user.click(submitButton);
+        }); */
+        await user.click(getSubmitButton());
         expect(
             await screen.findByText('Email is required')
         ).toBeInTheDocument();
@@ -33,9 +33,9 @@ describe('LoginForm', () => {
         ).toBeInTheDocument();
         expect(mockOnLogin).not.toHaveBeenCalled();
         //simualatiing someone typing
-        await user.type(emailInput, 'invalid-email');
-        await user.type(passwordInput, '123');
-        await user.click(submitButton);
+        await user.type(screen.getByLabelText('Email'), 'invalid-email');
+        await user.type(screen.getByLabelText('Password'), '123');
+        await user.click(getSubmitButton());
         expect(
             screen.getByText('Please enter a valid email')
         ).toBeInTheDocument();
@@ -48,4 +48,7 @@ describe('LoginForm', () => {
 
 const renderLoginForm = (mockOnLogin: any) => {
     render(<LoginForm onLogin={mockOnLogin} />);
+}
+const getSubmitButton = () => {
+    return screen.getByRole('button', { name: 'Log In' });
 }
