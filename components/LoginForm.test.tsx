@@ -37,10 +37,10 @@ describe('LoginForm', () => {
         await user.type(screen.getByLabelText('Password'), '123');
         await user.click(getSubmitButton());
         expect(
-          await  screen.findByText('Please enter a valid email')
+          screen.getByText('Please enter a valid email')
         ).toBeInTheDocument();
         expect(
-            await screen.findByText("Password must be at least 6 characters")
+            screen.getByText("Password must be at least 6 characters")
         ).toBeInTheDocument();
     });
 

@@ -48,14 +48,14 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} noValidate>
       <div>
         <label htmlFor="email">Email</label>
         <input
           id="email"
           type="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {setEmail(e.target.value)}}
         />
         {errors.email && <p>{errors.email}</p>}
       </div>
