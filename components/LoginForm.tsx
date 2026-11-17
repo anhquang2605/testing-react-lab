@@ -57,7 +57,7 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {errors.email && <p role="alert">{errors.email}</p>}
+        {errors.email && <p>{errors.email}</p>}
       </div>
 
       <div>
@@ -68,7 +68,7 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {errors.password && <p role="alert">{errors.password}</p>}
+        {errors.password && <p>{errors.password}</p>}
       </div>
 
       <button type="submit">Log In</button>
