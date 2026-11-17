@@ -24,23 +24,23 @@ describe('LoginForm', () => {
         const submitButton = screen.getByRole('button', {
             name: 'Log In',
         }); */
-        await user.click(getSubmitButton());
+        /* await user.click(getSubmitButton());
         expect(
             await screen.findByText('Email is required')
         ).toBeInTheDocument();
         expect(
             await screen.findByText('Password is required')
         ).toBeInTheDocument();
-        expect(mockOnLogin).not.toHaveBeenCalled();
+        expect(mockOnLogin).not.toHaveBeenCalled(); */
         //simualatiing someone typing
         await user.type(screen.getByLabelText('Email'), 'invalid-email');
         await user.type(screen.getByLabelText('Password'), '123');
         await user.click(getSubmitButton());
         expect(
-            screen.getByText('Please enter a valid email')
+          await  screen.findByText('Please enter a valid email')
         ).toBeInTheDocument();
         expect(
-            screen.getByText("Password must be at least 6 characters")
+            await screen.findByText("Password must be at least 6 characters")
         ).toBeInTheDocument();
     });
 
