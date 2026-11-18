@@ -87,3 +87,5 @@ A mock function allows us to track:
 
 8. Testing forms
 - getByLabelText('label name'): get the inputs associate with the labels, make sure the label and the input connected via htmlFor attribute
+
+9. Test API call with MSW
