@@ -51,6 +51,28 @@ describe('LoginForm', () => {
         await user.click(getSubmitButton());
         expect(mockOnLogin).toHaveBeenCalledWith('tW9Wg@example.com', 'password');
     })
+    it('should result in invalid email message when email is invalid', async () => {
+        const user = userEvent.setup();
+        renderLoginForm(mockOnLogin);
+        await user.type(screen.getByRole('textbox', { name: 'Email' }), 'hello');
+        await user.click(getSubmitButton());
+        expect(
+            await screen.findByText('Please enter a valid email')
+        ).toBeInTheDocument();
+    });
+    it('should result in password length message when password is too short', async () => {
+        const user = userEvent.setup();
+        renderLoginForm(mockOnLogin);
+        await user.type(
+            screen.getByRole('textbox', { name: 'Password' }),
+            '123'
+        );
+        await user.click(getSubmitButton());
+        expect(
+            await screen.findByText("Password must be at least 6 characters")
+        ).toBeInTheDocument();
+        
+    });
 });
 
 const renderLoginForm = (mockOnLogin: any) => {
