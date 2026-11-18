@@ -43,7 +43,14 @@ describe('LoginForm', () => {
             screen.getByText("Password must be at least 6 characters")
         ).toBeInTheDocument();
     });
-
+    it('should call onLogin with valid input', async () => {
+        const user = userEvent.setup();
+        renderLoginForm(mockOnLogin);
+        await user.type(screen.getByLabelText('Email'), 'tW9Wg@example.com');
+        await user.type(screen.getByLabelText('Password'), 'password');
+        await user.click(getSubmitButton());
+        expect(mockOnLogin).toHaveBeenCalledWith('tW9Wg@example.com', 'password');
+    })
 });
 
 const renderLoginForm = (mockOnLogin: any) => {
