@@ -54,7 +54,7 @@ describe('LoginForm', () => {
     it('should result in invalid email message when email is invalid', async () => {
         const user = userEvent.setup();
         renderLoginForm(mockOnLogin);
-        await user.type(screen.getByRole('textbox', { name: 'Email' }), 'hello');
+        await user.type(screen.getByLabelText('Email'), 'hello');
         await user.click(getSubmitButton());
         expect(
             await screen.findByText('Please enter a valid email')
@@ -64,7 +64,7 @@ describe('LoginForm', () => {
         const user = userEvent.setup();
         renderLoginForm(mockOnLogin);
         await user.type(
-            screen.getByRole('textbox', { name: 'Password' }),
+            screen.getByLabelText('Password'),
             '123'
         );
         await user.click(getSubmitButton());
