@@ -73,6 +73,16 @@ describe('LoginForm', () => {
         ).toBeInTheDocument();
         
     });
+    it('should call onLogin with valid input', async () => {
+        const email = 'tW9Wg@example.com';
+        const password = 'password';
+        const user = userEvent.setup();
+        renderLoginForm(mockOnLogin);
+        await user.type(screen.getByLabelText('Email'), email);
+        await user.type(screen.getByLabelText('Password'), password);
+        await user.click(getSubmitButton());
+        expect(mockOnLogin).toHaveBeenCalledWith(email, password);
+    })
 });
 
 const renderLoginForm = (mockOnLogin: any) => {
