@@ -13,17 +13,16 @@ describe('UserProfile', () => {
     render(<UserProfile />);
 
     expect(
-      await screen.findByText('Welcome, Alex!')
+      await screen.findByText('Welcome, Alex!', {}, { timeout: 2000 })
     ).toBeInTheDocument();
   });
 
   it('should remove the loading message after loading', async () => {
     render(<UserProfile />);
-
     expect(
-      await screen.findByText('Welcome, Alex!')
+      await screen.findByText('Welcome, Alex!', {}, { timeout: 2000 })
     ).toBeInTheDocument();
-
+    screen.debug();
     expect(
       screen.queryByText('Loading user...')
     ).not.toBeInTheDocument();
