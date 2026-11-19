@@ -29,6 +29,7 @@ describe('ProductList', () => {
     ).toBeInTheDocument();
   });
   it('should display an error when the API request fails', async () => {
+    //simulate the fake api call
     server.use(
         http.get('*/api/products', () => {
         return new HttpResponse(null, {
