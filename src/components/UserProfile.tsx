@@ -8,7 +8,7 @@ export default function UserProfile() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 500));
 
       setUser('Alex');
       setLoading(false);

@@ -100,3 +100,16 @@ A mock function allows us to track:
 - server.use('handler )
 - will over ride the defined handler 
 - make sure to call server.resetHandlers() afterEach so that the overid edoes not affect other test
+
+11. wait for condition or callback to be true
+- waitFor()
+- waitForElementToBeRemoved when waiting for an existing element to disappear.
+- Sometimes you're not waiting for an element to appear. Instead, you're waiting for a condition or callback to become true.
+ex: 
+    import { waitFor } from '@testing-library/react';
+
+    await waitFor(() => {
+    expect(mockFunction).toHaveBeenCalled();
+    });
+- default timeout for these are 1000ms
+

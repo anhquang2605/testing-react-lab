@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
 import UserProfile from './UserProfile';
 
 describe('UserProfile', () => {
@@ -19,12 +19,12 @@ describe('UserProfile', () => {
 
   it('should remove the loading message after loading', async () => {
     render(<UserProfile />);
+    const loadingMessage = screen.getByText('Loading user...');
+    await waitForElementToBeRemoved(loadingMessage);
     expect(
-      await screen.findByText('Welcome, Alex!', {}, { timeout: 2000 })
+      await screen.findByText('Welcome, Alex!')
     ).toBeInTheDocument();
     screen.debug();
-    expect(
-      screen.queryByText('Loading user...')
-    ).not.toBeInTheDocument();
+
   });
 });
