@@ -91,6 +91,6 @@ A mock function allows us to track:
 9. Test API call with MSW
 
 10. Override exsisting handler for paritcular testing
-- server.use('path', handler )
+- server.use('handler )
 - will over ride the defined handler 
 - make sure to call server.resetHandlers() afterEach so that the overid edoes not affect other test

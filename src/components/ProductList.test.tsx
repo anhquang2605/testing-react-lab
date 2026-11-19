@@ -19,4 +19,15 @@ describe('ProductList', () => {
       await screen.queryByText('Loading products...')
     ).not.toBeInTheDocument();
   });
+  it('renders error state when fetch fails', async () => {
+    server.use(
+      http.get('/api/products', () => {
+        return new HttpResponse(null, { status: 500 });
+      })
+    );
+    render(<ProductList />);
+    expect(
+      await screen.findByRole('alert')
+    ).toHaveTextContent('Unable to load products');
+  });
 });
