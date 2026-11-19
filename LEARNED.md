@@ -61,7 +61,7 @@ getBy	Returns element or throws immediately	Element should exist
 queryBy	Returns element or null	Checking absence
 findBy	Returns a Promise	Element appears asynchronously
 
-
+- Can add timeout option to prolong the getters ex: findBy('', {}, {timeout: 3000})
 6. What is userEvent?
 React Testing Library provides userEvent through a separate package.
 
@@ -96,7 +96,7 @@ A mock function allows us to track:
     afterAll	Shut down the mock server
 
     **Important**: Your existing Vitest configuration should already point to ./src/test/setup.ts. You don't need to change it if that's still the case.
-10. Override exsisting handler for paritcular testing
+10.  Override exsisting handler for paritcular testing
 - server.use('handler )
 - will over ride the defined handler 
 - make sure to call server.resetHandlers() afterEach so that the overid edoes not affect other test
