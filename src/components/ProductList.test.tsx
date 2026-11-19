@@ -21,7 +21,7 @@ describe('ProductList', () => {
   });
   it('renders error state when fetch fails', async () => {
     server.use(
-      http.get('/api/products', () => {
+      http.get('*/api/products', () => {
         return new HttpResponse(null, { status: 500 });
       })
     );
@@ -32,7 +32,7 @@ describe('ProductList', () => {
   });
   it('renders proper message when empthy list is returned', async () => {
     server.use(
-      http.get('/api/products', () => {
+      http.get('*/api/products', () => {
         return HttpResponse.json([]);
       })
     )
