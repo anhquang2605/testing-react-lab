@@ -30,4 +30,15 @@ describe('ProductList', () => {
       await screen.findByRole('alert')
     ).toHaveTextContent('Unable to load products');
   });
+  it('renders proper message when empthy list is returned', async () => {
+    server.use(
+      http.get('/api/products', () => {
+        return HttpResponse.json([]);
+      })
+    )
+    render(<ProductList />);
+    expect(
+      await screen.findByText('No products available.')
+    ).toBeInTheDocument();
+  });
 });

@@ -89,7 +89,13 @@ A mock function allows us to track:
 - getByLabelText('label name'): get the inputs associate with the labels, make sure the label and the input connected via htmlFor attribute
 
 9. Test API call with MSW
+- Why do we need these three lifecycle methods?
+    **Method**	    **Purpose**
+    beforeAll	Start the mock server
+    afterEach	Reset handlers so tests don't affect each other
+    afterAll	Shut down the mock server
 
+    **Important**: Your existing Vitest configuration should already point to ./src/test/setup.ts. You don't need to change it if that's still the case.
 10. Override exsisting handler for paritcular testing
 - server.use('handler )
 - will over ride the defined handler 

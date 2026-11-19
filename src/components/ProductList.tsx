@@ -49,12 +49,14 @@ export default function ProductList() {
     <section>
       <h1>Products</h1>
 
-      {products.map((product) => (
+      {products.length > 0 ? products.map((product) => (
         <article key={product.id}>
           <h2>{product.name}</h2>
           <p>${product.price.toFixed(2)}</p>
         </article>
-      ))}
+      )) : (
+        <p>No products available.</p>
+      )}
     </section>
   );
 }
