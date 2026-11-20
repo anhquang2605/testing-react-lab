@@ -63,6 +63,7 @@ findBy	Returns a Promise	Element appears asynchronously
 
 - Can add timeout option to prolong the getters ex: findBy('', {}, {timeout: 3000})
 6. What is userEvent?
+![alt text](image.png)
 React Testing Library provides userEvent through a separate package.
 
 It simulates user interactions, such as:
@@ -73,7 +74,7 @@ It simulates user interactions, such as:
 First, import it:
 import userEvent from '@testing-library/user-event';
 
-7. mock function
+1. mock function
 Consider:
 const mockAddToCart = vi.fn();
 
