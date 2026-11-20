@@ -20,11 +20,11 @@ describe('UserProfile', () => {
   it('should remove the loading message after loading', async () => {
     render(<UserProfile />);
     const loadingMessage = screen.getByText('Loading user...');
+
     await waitForElementToBeRemoved(loadingMessage);
+    
     expect(
       await screen.findByText('Welcome, Alex!')
     ).toBeInTheDocument();
-    screen.debug();
-
   });
 });
