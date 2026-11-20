@@ -8,7 +8,7 @@ export interface Product {
   price: number;
 }
 
-const products: Product[] = [
+export const products: Product[] = [
   { id: '1', name: 'Wireless Gaming Mouse', price: 29.99 },
   { id: '2', name: 'Mechanical Keyboard', price: 79.99 },
   { id: '3', name: 'Gaming Headset', price: 49.99 },
