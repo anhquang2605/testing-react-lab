@@ -43,5 +43,28 @@ describe('ProductFilter', () => {
         await user.type(inputElement, 'mouSe');
         expect(screen.getByText('Wireless Gaming Mouse - $29.99')).toBeInTheDocument();
     })
+    it('should display all products again when search is cleared', async () => {
+        const user = userEvent.setup();
+
+        render(<ProductFilter />);
+
+        const inputElement = screen.getByLabelText('Search products');
+
+        await user.type(inputElement, 'Mouse');
+
+        expect(
+            screen.getByText('Wireless Gaming Mouse - $29.99')
+        ).toBeInTheDocument();
+
+        await user.clear(inputElement);
+
+        for (const product of products) {
+            expect(
+            screen.getByText(
+                `${product.name} - $${product.price.toFixed(2)}`
+            )
+            ).toBeInTheDocument();
+        }
+    });
   })
 });
