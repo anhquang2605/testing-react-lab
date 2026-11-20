@@ -31,7 +31,7 @@ describe('ProductFilter', () => {
         render(<ProductFilter />);
         const inputElement = screen.getByLabelText('Search products');
         await user.type(inputElement, 'Nonexistent Product');
-        expect(await screen.getByText('No products found.')).toBeInTheDocument();
+        expect(screen.getByText('No products found.')).toBeInTheDocument();
         for (const product of products) {
             expect(screen.queryByText(`${product.name} - $${product.price.toFixed(2)}`)).not.toBeInTheDocument();
         }
@@ -41,7 +41,7 @@ describe('ProductFilter', () => {
         render(<ProductFilter />);
         const inputElement = screen.getByLabelText('Search products');
         await user.type(inputElement, 'mouSe');
-        expect(await screen.findByText('Wireless Gaming Mouse - $29.99')).toBeInTheDocument();
+        expect(screen.getByText('Wireless Gaming Mouse - $29.99')).toBeInTheDocument();
     })
   })
 });
