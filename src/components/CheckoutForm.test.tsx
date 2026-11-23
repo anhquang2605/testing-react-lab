@@ -28,7 +28,7 @@ describe('CheckoutForm', () => {
         const submitButton = screen.getByRole('button', { name: /place order/i });
         const user = userEvent.setup();
         await user.click(submitButton);
-        expect(await screen.findByText('All fields are required.')).toBeInTheDocument();
+        expect(screen.getByText('All fields are required.')).toBeInTheDocument();
     })
   })
   describe('CheckoutForm Invalid email validation', () => {
@@ -43,7 +43,7 @@ describe('CheckoutForm', () => {
         await user.type(nameInput, 'John Doe');
         await user.type(addressInput, '123 Main St');
         await user.click(submitButton);
-        expect(await screen.findByText('Please enter a valid email.')).toBeInTheDocument();
+        expect(screen.getByText('Please enter a valid email.')).toBeInTheDocument();
     })
   })
 });

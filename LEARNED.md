@@ -62,6 +62,7 @@ queryBy	Returns element or null	Checking absence
 findBy	Returns a Promise	Element appears asynchronously
 
 - Can add timeout option to prolong the getters ex: findBy('', {}, {timeout: 3000})
+- in form validation, despite using await on user event, the form is still synchronous so no need to use findByText, unless the poeration is Async
 6. What is userEvent?
 ![alt text](image.png)
 React Testing Library provides userEvent through a separate package.
