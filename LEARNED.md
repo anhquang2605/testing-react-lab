@@ -114,3 +114,5 @@ ex:
     });
 - default timeout for these are 1000ms
 
+12. Integeration testing
+- Test to make sure that everything is working together as a whole.
