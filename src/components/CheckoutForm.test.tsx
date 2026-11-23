@@ -31,4 +31,19 @@ describe('CheckoutForm', () => {
         expect(await screen.findByText('All fields are required.')).toBeInTheDocument();
     })
   })
+  describe('CheckoutForm Invalid email validation', () => {
+    it('should display validation message when submitting form with invalid email', async () => {
+        render(<CheckoutForm total={PRICE} />);
+        const user = userEvent.setup();
+        const emailInput = screen.getByLabelText('Email');
+        const nameInput = screen.getByLabelText('Customer name');
+        const addressInput = screen.getByLabelText('Shipping address');
+        const submitButton = screen.getByRole('button', { name: /place order/i });
+        await user.type(emailInput, 'invalid-email');
+        await user.type(nameInput, 'John Doe');
+        await user.type(addressInput, '123 Main St');
+        await user.click(submitButton);
+        expect(await screen.findByText('Please enter a valid email.')).toBeInTheDocument();
+    })
+  })
 });
