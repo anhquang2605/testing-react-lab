@@ -3,6 +3,23 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import CheckoutForm from './CheckoutForm';
 
+const PRICE = 129.99;
 describe('CheckoutForm', () => {
   // Write your tests here
+  describe('CheckoutForm Initial Render', () => {
+    it('should render the form with all input fields and submit button', () => {
+        render(<CheckoutForm total={PRICE} />);
+        const emailInput = screen.getByLabelText('Email');
+        const nameInput = screen.getByLabelText('Customer name');
+        const addressInput = screen.getByLabelText('Shipping address');
+        const submitButton = screen.getByRole('button', { name: /place order/i });
+        expect(emailInput).toBeInTheDocument();
+        expect(nameInput).toBeInTheDocument();
+        expect(addressInput).toBeInTheDocument();
+        expect(submitButton).toBeInTheDocument();
+        expect(
+            screen.getByText(`Total: $${PRICE.toFixed(2)}`)
+        ).toBeInTheDocument();
+    })
+  })
 });
