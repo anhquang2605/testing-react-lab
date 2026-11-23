@@ -22,4 +22,13 @@ describe('CheckoutForm', () => {
         ).toBeInTheDocument();
     })
   })
+  describe('CheckoutForm Empty form validation', () => {
+    it('should display validation messages when submitting empty form', async () => {
+        render(<CheckoutForm total={PRICE} />);
+        const submitButton = screen.getByRole('button', { name: /place order/i });
+        const user = userEvent.setup();
+        await user.click(submitButton);
+        expect(await screen.findByText('All fields are required.')).toBeInTheDocument();
+    })
+  })
 });
