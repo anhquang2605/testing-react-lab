@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import CheckoutForm from './CheckoutForm';
@@ -45,5 +45,23 @@ describe('CheckoutForm', () => {
         await user.click(submitButton);
         expect(screen.getByText('Please enter a valid email.')).toBeInTheDocument();
     })
+  })
+  describe('Submission is not possible when the form is invalid', () => {
+    const mocking = vi.fn();
+    //simulate a mock fetch function which is a global function
+    vi.stubGlobal('fetch', mocking);
+    it('should not call fetch when submitting invalid form', async () => {
+      const user = userEvent.setup();
+      render(<CheckoutForm total={PRICE} />);
+      const submitButton = screen.getByRole(
+        'button',
+        {
+          name: /place order/i
+        }
+      )
+      await user.click(submitButton);
+      expect(mocking).not.toHaveBeenCalled();
+    })
+    
   })
 });
