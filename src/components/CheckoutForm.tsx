@@ -30,7 +30,7 @@ export default function CheckoutForm({ total }: CheckoutFormProps) {
   };
   const handleFetch = async (data: CheckoutData) => {
     try {
-      const response = await fetch('/api/checkout', {
+      const response = await fetch  (new URL('/api/checkout', window.location.origin), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
