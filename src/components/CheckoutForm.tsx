@@ -28,23 +28,7 @@ export default function CheckoutForm({ total }: CheckoutFormProps) {
       [e.target.name]: e.target.value,
     });
   };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (!form.name.trim() || !form.email.trim() || !form.address.trim()) {
-      setMessage('All fields are required.');
-      return;
-    }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      setMessage('Please enter a valid email.');
-      return;
-    }
-
-    setLoading(true);
-    setMessage('');
-
+  const handleFetch = async (data: CheckoutData) => {
     try {
       const response = await fetch('/api/checkout', {
         method: 'POST',
@@ -67,6 +51,23 @@ export default function CheckoutForm({ total }: CheckoutFormProps) {
     } finally {
       setLoading(false);
     }
+  }
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!form.name.trim() || !form.email.trim() || !form.address.trim()) {
+      setMessage('All fields are required.');
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      setMessage('Please enter a valid email.');
+      return;
+    }
+
+    setLoading(true);
+    setMessage('');
+    await handleFetch(form);
   };
 
   return (
