@@ -18,4 +18,12 @@ export const handlers = [
   http.get('*/api/products', () => {
     return HttpResponse.json(mockProducts);
   }),
+  http.post('*/api/checkout', async ({request}) => {
+    const body = await request.json();
+    return HttpResponse.json({
+      success: true,
+      message: 'Order placed successfully!',
+      order: body
+    });
+  })
 ];
